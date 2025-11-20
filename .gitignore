@@ -1,0 +1,29 @@
+# Blender backup files
+*.blend[1-9]
+*.blend1
+*.blend2
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Windows thumbnails
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# Zip releases (on ne les push pas dans le code)
+*.zip
+
+# Éditeur / IDE
+.idea/
+.vscode/
+*.sublime-*
+
+# Fichiers temporaires divers
+*~
+.#*
