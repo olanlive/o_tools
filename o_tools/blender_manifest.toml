@@ -10,6 +10,6 @@ blender_version_min = "4.2.0"
 
 license = [ "SPDX:GPL-3.0-or-later" ]
 
-website = "https://github.com/olivierxxx/o_tools"
+website = "https://github.com/olanlive/o_tools"
 
 description = "Quick rigging & playback tools — Bone Wire/In Front toggle — Slow-Mo 5 fps ↔ original — Profil Viewport: Flat + Black background + Overlays/Gizmo hidden (multi-viewport, state restore)"
