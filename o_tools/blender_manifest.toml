@@ -1,9 +1,9 @@
 schema_version = "1.0.0"
 
 id = "o_tools"
-version = "1.2.2"
+version = "1.2.3"
 name = "O Tools"
-tagline = "Bone Wire/In Front • Slow-Mo 5 fps • Profil Viewport (Flat+Black+Clean) — N-panel → Tool → O Tools"
+tagline = "Bone Wire/In Front • Smart Slow-Mo (24→6, 25→5, 30→6…) • Profil Viewport — N-panel → Tool → O Tools"
 maintainer = "Olivier L with Grok"
 type = "add-on"
 blender_version_min = "4.2.0"
