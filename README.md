@@ -4,7 +4,7 @@ Addon personnel ultra-pratique pour rigging & animation sous Blender 4.2+.
 
 ### Fonctionnalités
 - **Bone Wire / In Front** toggle
-![Bone Wire demo](docs/Bone_Wire_In_Front.gif){ width=300 }
+![Bone Wire demo](docs/Bone_Wire_In_Front.gif?raw=true){ width=300 }
 - **Smart Slow-Mo** : multiple intelligent du FPS original  
   → 24 → 6 fps 25 → 5 fps 30 → 6 fps 50 → 10 fps 60 → 12 fps etc.
 - **Affichage FPS en temps réel** dans le panel (s’actualise même depuis la Timeline)
