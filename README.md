@@ -1,6 +1,6 @@
 # O Tools
 
-Addon personnel pratique pour affichage rigging & animation sous Blender 4.2+.
+Addon personnel pratique pour affichage rigging & animation sous Blender 3.6+.
 
 ### Fonctionnalités
 - **Bone Wire / In Front** toggle
@@ -36,7 +36,7 @@ Licence GPL-3.0
 
 # O Tools
 
-Useful personal add-on for rigging & animation display in Blender 4.2+.
+Useful personal add-on for rigging & animation display in Blender 3.6+.
 
 ### Features
 - **Bone Wire / In Front** toggle
@@ -68,6 +68,7 @@ Useful personal add-on for rigging & animation display in Blender 4.2+.
 Olivier L with Grok  
 
 License GPL-3.0
+
 
 
 
