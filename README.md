@@ -18,7 +18,7 @@ Addon personnel pratique pour affichage rigging & animation sous Blender 4.2+.
 - **Status Bar Filename** : affiche le nom du fichier .blend en bas à droite de la status bar (avec * si modifié)
   → Très pratique en plein écran où le titre est masqué  
   → Idéal quand on travaille avec des versions numérotées (.blend001, .blend002…)
-<img src="docs/status_bar_filename.png?raw=true" width="400" alt="Status Bar Filename">
+<img src="docs/status_bar_filename.png?raw=true" width="200" alt="Status Bar Filename">
 
 - **Préférences** : cases à cocher pour activer/désactiver chaque fonctionnalité individuellement (Preferences → Add-ons → O Tools)
 
@@ -54,7 +54,7 @@ Useful personal add-on for rigging & animation display in Blender 4.2+.
 - **Status Bar Filename** : displays current .blend filename on the right of the status bar (with * if modified)  
   → Very useful in full-screen mode where the title is hidden  
   → Perfect when working with numbered versions (.blend001, .blend002…)
-<img src="docs/status_bar_filename.png?raw=true" width="400" alt="Status Bar Filename">
+<img src="docs/status_bar_filename.png?raw=true" width="200" alt="Status Bar Filename">
 
 - **Preferences** : checkboxes to enable/disable each feature individually (Preferences → Add-ons → O Tools)
 
@@ -67,4 +67,5 @@ Useful personal add-on for rigging & animation display in Blender 4.2+.
 Olivier L with Grok  
 
 License GPL-3.0
+
 
