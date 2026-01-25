@@ -2,7 +2,7 @@
 #
 #  O Tools — Quick rigging & playback utilities
 #  Author: Olivier L with Grok
-#  Version: 1.2.3
+#  Version: 1.3.0
 #  Blender: 4.2+
 #
 # ##### END GPL LICENSE BLOCK #####
@@ -10,7 +10,7 @@
 from __future__ import annotations
 import bpy
 import json
-from bpy.types import Operator, Panel, Context, Scene, SpaceView3D, PropertyGroup
+from bpy.types import Operator, Panel, Context, Scene, SpaceView3D, PropertyGroup, AddonPreferences
 from bpy.props import StringProperty, CollectionProperty, IntProperty, BoolProperty
 from typing import List, Dict, Any
 
@@ -18,11 +18,50 @@ from typing import List, Dict, Any
 bl_info = {
     "name": "O Tools",
     "author": "Olivier L with Grok",
-    "version": (1, 2, 3),
+    "version": (1, 3, 0),
     "blender": (4, 2, 0),
-    "location": "3D Viewport > Sidebar > Tool tab > O Tools",
-    "description": "Bone Wire/In Front • Smart Slow-Mo • Profil Viewport (Flat+Black+Clean)",
+    "location": "3D Viewport > Sidebar > Tool tab > O Tools + Status Bar",
+    "description": "Bone Wire/In Front • Smart Slow-Mo • Profil Viewport • Status Bar Filename",
 }
+
+
+# ———————————————————————— Addon Preferences ————————————————————————
+class OToolsPreferences(AddonPreferences):
+    """O Tools preferences – enable/disable individual features"""
+    bl_idname = __name__
+
+    enable_bone_wire: BoolProperty(
+        name="Bone Wire / In Front",
+        description="Show Bone Wire / In Front button in panel",
+        default=True,
+    )
+
+    enable_slow_mo: BoolProperty(
+        name="Smart Slow-Mo",
+        description="Show Smart Slow-Mo button in panel",
+        default=True,
+    )
+
+    enable_profil_viewport: BoolProperty(
+        name="Profil Viewport",
+        description="Show Profil Viewport button in panel",
+        default=True,
+    )
+
+    enable_statusbar_filename: BoolProperty(
+        name="Status Bar Filename",
+        description="Display current .blend filename in status bar (right side)",
+        default=True,
+    )
+
+    def draw(self, context: Context) -> None:
+        layout = self.layout
+        col = layout.column(align=True)
+        col.label(text="Enable / Disable features:")
+        col.prop(self, "enable_bone_wire")
+        col.prop(self, "enable_slow_mo")
+        col.prop(self, "enable_profil_viewport")
+        col.prop(self, "enable_statusbar_filename")
 
 
 # ———————————————————————— Serialized state storage ————————————————————————
@@ -38,20 +77,29 @@ def get_3d_views(context: Context) -> List[SpaceView3D]:
 
 
 def force_redraw_3d_views(context: Context) -> None:
-    """Force redraw of all 3D viewports to update UI after changes."""
+    """Force redraw of all 3D viewports."""
     for area in context.screen.areas:
         if area.type == 'VIEW_3D':
             area.tag_redraw()
 
 
-def _redraw_ui_handler(scene: Scene, depsgraph: Any) -> None:
-    """Handler to force redraw of UI regions on FPS change."""
-    for window in bpy.context.window_manager.windows:
-        for area in window.screen.areas:
-            if area.type == 'VIEW_3D':
-                for region in area.regions:
-                    if region.type == 'UI':
-                        region.tag_redraw()
+# ———————————————————————— Status Bar Filename draw callback ————————————————————————
+def draw_filename_statusbar(self, context: Context) -> None:
+    """Draw current .blend filename on the extreme right of the status bar."""
+    prefs = context.preferences.addons[__name__].preferences
+    if not prefs.enable_statusbar_filename:
+        return
+
+    layout = self.layout
+
+    filepath = bpy.data.filepath
+    filename = bpy.path.basename(filepath) if filepath else "Untitled.blend"
+
+    if bpy.data.is_dirty:
+        filename += " *"
+
+    layout.alignment = 'RIGHT'
+    layout.label(text=filename, icon='FILE_BLEND')
 
 
 # ———————————————————————— 1. Bone Wire / In Front Toggle ————————————————————————
@@ -84,28 +132,20 @@ class OTOOLS_OT_toggle_slowmo(Operator):
     def execute(self, context: Context) -> set:
         scene = context.scene
 
-        # Reset original if default or mismatched when not active
-        if scene.otools_original_fps == 0 or (scene.otools_original_fps != scene.render.fps and not scene.otools_slow_mo_active):
+        if scene.otools_original_fps == 0:
             scene.otools_original_fps = scene.render.fps
 
         original = scene.otools_original_fps
         current = scene.render.fps
 
         if not scene.otools_slow_mo_active:
-            # Activate slow-mo
-            if original in (24, 48):
-                slow_fps = original // 4
-                factor = 4
-            else:
-                slow_fps = original // 5
-                factor = 5
-
+            slow_fps = original // 4 if original in (24, 48) else original // 5
+            factor = 4 if original in (24, 48) else 5
             scene.render.fps = slow_fps
             scene.render.fps_base = 1.0
             scene.otools_slow_mo_active = True
             self.report({'INFO'}, f"Slow-Mo → {slow_fps} fps ({original} ÷ {factor})")
         else:
-            # Deactivate slow-mo
             scene.render.fps = original
             scene.render.fps_base = 1.0
             scene.otools_slow_mo_active = False
@@ -196,13 +236,20 @@ class OTOOLS_PT_panel(Panel):
     bl_category = "Tool"
 
     def draw(self, context: Context) -> None:
+        prefs = context.preferences.addons[__name__].preferences
         col = self.layout.column(align=True)
-        col.operator("otools.bone_wire_front", icon='ARMATURE_DATA')  # 1. Bone Wire / In Front
-        col.operator("otools.viewport_profile", icon='SHADING_RENDERED')  # 2. Profil Viewport
-        col.separator()
-        col.operator("otools.toggle_slowmo", text="Slow-Mo (×4/×5)", icon='PREVIEW_RANGE')  # 3. Slow-Mo
-        col.label(text=f"FPS: {context.scene.render.fps}")  # Label FPS dynamique after Slow-Mo
 
+        if prefs.enable_bone_wire:
+            col.operator("otools.bone_wire_front", icon='ARMATURE_DATA')
+
+        if prefs.enable_profil_viewport:
+            col.operator("otools.viewport_profile", icon='SHADING_RENDERED')
+
+        col.separator()
+
+        if prefs.enable_slow_mo:
+            col.operator("otools.toggle_slowmo", text="Slow-Mo (×4/×5)", icon='PREVIEW_RANGE')
+            col.label(text=f"FPS: {context.scene.render.fps}")
 
 # ———————————————————————— Registration ————————————————————————
 classes = (
@@ -211,6 +258,7 @@ classes = (
     OTOOLS_OT_viewport_profile,
     OTOOLS_PT_panel,
     OToolsViewportStateItem,
+    OToolsPreferences,
 )
 
 
@@ -220,10 +268,11 @@ def register() -> None:
     Scene.otools_viewport_saved = CollectionProperty(type=OToolsViewportStateItem)
     bpy.types.Scene.otools_original_fps = IntProperty(name="Original FPS", default=0)
     bpy.types.Scene.otools_slow_mo_active = BoolProperty(name="Slow-Mo Active", default=False)
-    bpy.app.handlers.depsgraph_update_post.append(_redraw_ui_handler)
+    bpy.types.STATUSBAR_HT_header.append(draw_filename_statusbar)
 
 
 def unregister() -> None:
+    bpy.types.STATUSBAR_HT_header.remove(draw_filename_statusbar)
     for cls in reversed(classes):
         bpy.utils.unregister_class(cls)
     if hasattr(Scene, "otools_viewport_saved"):
@@ -232,8 +281,6 @@ def unregister() -> None:
         del bpy.types.Scene.otools_original_fps
     if hasattr(bpy.types.Scene, "otools_slow_mo_active"):
         del bpy.types.Scene.otools_slow_mo_active
-    if _redraw_ui_handler in bpy.app.handlers.depsgraph_update_post:
-        bpy.app.handlers.depsgraph_update_post.remove(_redraw_ui_handler)
 
 
 if __name__ == "__main__":
