@@ -5,6 +5,7 @@ Addon personnel pratique pour affichage rigging & animation sous Blender 4.2+.
 ### Fonctionnalités
 - **Bone Wire / In Front** toggle
 <img src="docs/Bone_Wire_In_Front.gif?raw=true" width="400" alt="Bone Wire / In Front demo">
+
 - **Smart Slow-Mo** : multiple intelligent du FPS original  
   → 24 → 6 fps 25 → 5 fps 30 → 6 fps 50 → 10 fps 60 → 12 fps etc.
 <img src="docs/Slow-Mo.gif?raw=true" width="400" alt="Slow-Mo demo">
@@ -67,5 +68,6 @@ Useful personal add-on for rigging & animation display in Blender 4.2+.
 Olivier L with Grok  
 
 License GPL-3.0
+
 
 
