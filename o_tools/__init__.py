@@ -1,8 +1,8 @@
 # ##### BEGIN GPL LICENSE BLOCK #####
 #
-#  O Tools — Quick rigging & playback utilities
+#  O'Tools — Quick rigging & playback utilities
 #  Author: Olivier L with Grok
-#  Version: 1.3.0
+#  Version: 1.3.1
 #  Blender: 4.2+
 #
 # ##### END GPL LICENSE BLOCK #####
@@ -16,18 +16,18 @@ from typing import List, Dict, Any
 
 
 bl_info = {
-    "name": "O Tools",
+    "name": "O'Tools",
     "author": "Olivier L with Grok",
-    "version": (1, 3, 0),
+    "version": (1, 3, 1),
     "blender": (4, 2, 0),
-    "location": "3D Viewport > Sidebar > Tool tab > O Tools + Status Bar",
+    "location": "3D Viewport > Sidebar > Tool tab > O'Tools + Status Bar",
     "description": "Bone Wire/In Front • Smart Slow-Mo • Profil Viewport • Status Bar Filename",
 }
 
 
 # ———————————————————————— Addon Preferences ————————————————————————
 class OToolsPreferences(AddonPreferences):
-    """O Tools preferences – enable/disable individual features"""
+    """O'Tools preferences – enable/disable individual features"""
     bl_idname = __name__
 
     enable_bone_wire: BoolProperty(
@@ -229,7 +229,7 @@ class OTOOLS_OT_viewport_profile(Operator):
 
 # ———————————————————————— Panel ————————————————————————
 class OTOOLS_PT_panel(Panel):
-    bl_label = "O Tools"
+    bl_label = "O'Tools"
     bl_idname = "OTOOLS_PT_panel"
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'

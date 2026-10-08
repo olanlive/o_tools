@@ -18,6 +18,8 @@ Desktop.ini
 
 # Zip releases (on ne les push pas dans le code)
 *.zip
+# Le catalogue Get Extensions est servi par GitHub Pages : ce zip-là est le paquet publié.
+!docs/o_tools-*.zip
 
 # Éditeur / IDE
 .idea/

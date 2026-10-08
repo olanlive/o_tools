@@ -1,6 +1,24 @@
-# O Tools
+# O'Tools
 
 Addon personnel pratique pour affichage rigging & animation sous Blender 3.6+.
+
+### Installation
+À partir de Blender 4.2, ajoute le dépôt. Les versions suivantes se mettent à jour dans Blender.
+
+1. Edit → Preferences → Get Extensions
+2. En haut à droite : Repositories → **+** → Add Remote Repository
+3. Coller l’adresse : `https://olanlive.github.io/o_tools/index.json`
+4. Installer **O'Tools**, puis l’activer
+
+Dans les réglages de ce dépôt, activer **Check for Updates on Startup** pour être prévenu des versions suivantes.
+
+Si O'Tools, ou l’ancienne « O Tools », a déjà été installé par zip, désinstalle cette copie avant : Preferences → Add-ons → fiche de l’addon → Uninstall. Sinon Blender affiche les deux, l’ancienne dans le dépôt local et la nouvelle dans le dépôt ajouté.
+
+Le zip reste disponible, y compris pour Blender 3.6. Cette installation ne prévient pas des mises à jour suivantes.
+
+1. Aller dans **Releases** → télécharger le .zip le plus récent  
+   → https://github.com/olanlive/o_tools/releases
+2. Blender → Edit → Preferences → Add-ons → Install → sélectionner le .zip → Enable
 
 ### Fonctionnalités
 - **Bone Wire / In Front** toggle
@@ -21,12 +39,7 @@ Addon personnel pratique pour affichage rigging & animation sous Blender 3.6+.
   → Idéal quand on travaille avec des versions numérotées (.blend001, .blend002…)
 <img src="docs/status_bar_filename.png?raw=true" width="200" alt="Status Bar Filename">
 
-- **Préférences** : cases à cocher pour activer/désactiver chaque fonctionnalité individuellement (Preferences → Add-ons → O Tools)
-
-### Installation
-1. Aller dans **Releases** → télécharger le .zip le plus récent  
-   → https://github.com/olanlive/o_tools/releases
-2. Blender → Edit → Preferences → Add-ons → Install → sélectionner le .zip → Enable
+- **Préférences** : cases à cocher pour activer/désactiver chaque fonctionnalité individuellement (Preferences → Add-ons → O'Tools)
 
 ### Auteur
 Olivier L with Grok  
@@ -34,9 +47,27 @@ Licence GPL-3.0
 
 ---
 
-# O Tools
+# O'Tools
 
 Useful personal add-on for rigging & animation display in Blender 3.6+.
+
+### Installation
+From Blender 4.2, add the repository. Later versions update inside Blender.
+
+1. Edit → Preferences → Get Extensions
+2. Top right: Repositories → **+** → Add Remote Repository
+3. Paste this address: `https://olanlive.github.io/o_tools/index.json`
+4. Install **O'Tools**, then enable it
+
+In that repository’s settings, turn on **Check for Updates on Startup** to be notified of later versions.
+
+If O'Tools, or the older “O Tools”, was already installed from a zip, uninstall that copy first: Preferences → Add-ons → the add-on entry → Uninstall. Otherwise Blender shows both, the old one in the local repository and the new one in the repository you add.
+
+The zip remains available, including for Blender 3.6. That install does not notify you of later updates.
+
+1. Go to **Releases** → download the latest .zip  
+   → https://github.com/olanlive/o_tools/releases
+2. Blender → Edit → Preferences → Add-ons → Install → select the .zip → Enable
 
 ### Features
 - **Bone Wire / In Front** toggle
@@ -57,18 +88,9 @@ Useful personal add-on for rigging & animation display in Blender 3.6+.
   → Perfect when working with numbered versions (.blend001, .blend002…)
 <img src="docs/status_bar_filename.png?raw=true" width="200" alt="Status Bar Filename">
 
-- **Preferences** : checkboxes to enable/disable each feature individually (Preferences → Add-ons → O Tools)
-
-### Installation
-1. Go to **Releases** → download the latest .zip  
-   → https://github.com/olanlive/o_tools/releases
-2. Blender → Edit → Preferences → Add-ons → Install → select the .zip → Enable
+- **Preferences** : checkboxes to enable/disable each feature individually (Preferences → Add-ons → O'Tools)
 
 ### Author
 Olivier L with Grok  
 
 License GPL-3.0
-
-
-
-
