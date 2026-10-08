@@ -8,9 +8,8 @@ Addon personnel pratique pour affichage rigging & animation sous Blender 3.6+.
 1. Edit → Preferences → Get Extensions
 2. En haut à droite : Repositories → **+** → Add Remote Repository
 3. Coller l’adresse : `https://olanlive.github.io/o_tools/index.json`
-4. Installer **O'Tools**, puis l’activer
-
-Dans les réglages de ce dépôt, activer **Check for Updates on Startup** pour être prévenu des versions suivantes.
+4. Cocher **Check for Updates on Startup**, sous l’adresse
+5. Installer **O'Tools**, puis l’activer
 
 Si O'Tools, ou l’ancienne « O Tools », a déjà été installé par zip, désinstalle cette copie avant : Preferences → Add-ons → fiche de l’addon → Uninstall. Sinon Blender affiche les deux, l’ancienne dans le dépôt local et la nouvelle dans le dépôt ajouté.
 
@@ -57,9 +56,8 @@ From Blender 4.2, add the repository. Later versions update inside Blender.
 1. Edit → Preferences → Get Extensions
 2. Top right: Repositories → **+** → Add Remote Repository
 3. Paste this address: `https://olanlive.github.io/o_tools/index.json`
-4. Install **O'Tools**, then enable it
-
-In that repository’s settings, turn on **Check for Updates on Startup** to be notified of later versions.
+4. Check **Check for Updates on Startup**, under the address
+5. Install **O'Tools**, then enable it
 
 If O'Tools, or the older “O Tools”, was already installed from a zip, uninstall that copy first: Preferences → Add-ons → the add-on entry → Uninstall. Otherwise Blender shows both, the old one in the local repository and the new one in the repository you add.
 
