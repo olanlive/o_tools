@@ -7,7 +7,7 @@ Addon personnel pratique pour affichage rigging & animation sous Blender 3.6+.
 
 1. Edit → Preferences → Get Extensions
 2. En haut à droite : Repositories → **+** → Add Remote Repository
-3. Coller l’adresse : `https://olanlive.github.io/o_tools/index.json`
+3. Coller l’adresse : `https://olanlive.github.io/o_tools/api/v1/extensions`
 4. Cocher **Check for Updates on Startup**, sous l’adresse
 5. Installer **O'Tools**, puis l’activer
 
@@ -55,7 +55,7 @@ From Blender 4.2, add the repository. Later versions update inside Blender.
 
 1. Edit → Preferences → Get Extensions
 2. Top right: Repositories → **+** → Add Remote Repository
-3. Paste this address: `https://olanlive.github.io/o_tools/index.json`
+3. Paste this address: `https://olanlive.github.io/o_tools/api/v1/extensions`
 4. Check **Check for Updates on Startup**, under the address
 5. Install **O'Tools**, then enable it
 
